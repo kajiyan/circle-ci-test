@@ -13,7 +13,7 @@ jobs:
             echo "Deploying project ..."
             echo $(git status)
             echo $(git ftp init -v)
-            git ftp push --user "${FTP_USER}" --passwd "${FTP_PWD}" --remote-root "${FTP_LOCATION}"
+            git ftp push --user "${FTP_USER}" --passwd "${FTP_PWD}" --remote-root "${FTP_LOCATION}" "${FTP_URL}"
  
 workflows:
   version: 2
