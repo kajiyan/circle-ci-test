@@ -15,9 +15,8 @@ jobs:
             git config git-ftp.user $FTP_USER
             git config git-ftp.url $FTP_URL
             git config git-ftp.password $FTP_PWD
-            git ftp init -v
+            git ftp init
             git ftp push -u $FTP_USER -p $FTP_PWD --remote-root $FTP_LOCATION
- 
  
 workflows:
   version: 2
