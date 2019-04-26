@@ -18,6 +18,7 @@ jobs:
             git ftp init -v
             git ftp push -u $FTP_USER -p $FTP_PWD --remote-root $FTP_LOCATION
  
+ 
 workflows:
   version: 2
   just-deploy:
