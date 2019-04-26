@@ -12,7 +12,10 @@ jobs:
             sudo apt-get -qq install git-ftp
             echo "Deploying project ..."
             echo $(git status)
-            git ftp init --init-if-not-exist --user "${FTP_USER}" --passwd "${FTP_PWD}" --remote-root ${FTP_LOCATION} ${FTP_URL}
+            git config git-ftp.user ${FTP_USER}
+            git config git-ftp.url ${FTP_URL}
+            git config git-ftp.password "${FTP_PWD}"
+            git ftp push -u "${FTP_USER}" -p "${FTP_PWD}" --remote-root ${FTP_LOCATION} ${FTP_URL}
  
 workflows:
   version: 2
