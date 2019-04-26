@@ -15,7 +15,8 @@ jobs:
             git config git-ftp.user ${FTP_USER}
             git config git-ftp.url ${FTP_URL}
             git config git-ftp.password "${FTP_PWD}"
-            git ftp init --init-if-not-exist -u "${FTP_USER}" -p "${FTP_PWD}" --remote-root ${FTP_LOCATION} ${FTP_URL}
+            git ftp init -v
+            git ftp push -u "${FTP_USER}" -p "${FTP_PWD}" --remote-root ${FTP_LOCATION}
  
 workflows:
   version: 2
