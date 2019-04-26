@@ -5,3 +5,4 @@ jobs:
       - image: circleci/node:10
     steps:
       - run: echo "hello circle-ci"
+      - run: pwd
