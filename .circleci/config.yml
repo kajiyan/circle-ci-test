@@ -1,8 +1,25 @@
 version: 2
 jobs:
-  build:
+  deploy:
     docker:
-      - image: circleci/node:10
+      - image: circleci/php:7.1.5-browsers
+    working_directory: ~/repo
     steps:
-      - run: echo "hello circle-ci"
-      - run: pwd
+      - checkout
+      - run: 
+          name: Deploy Master Branch
+          command: |
+            sudo apt-get update
+            sudo apt-get -qq install git-ftp
+            echo "Deploying project ..."
+            echo $(git status)
+            git ftp init --init-if-not-exist --user "${FTP_USER}" --passwd "${FTP_PWD}" ${FTP_LOCATION}
+ 
+workflows:
+  version: 2
+  just-deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: master
